@@ -69,6 +69,7 @@
     <Compile Include="SysSample.cs">
       <DependentUpon>LY_MVC_OA_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys\SysSampleModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="LY_MVC_OA_Model.edmx">

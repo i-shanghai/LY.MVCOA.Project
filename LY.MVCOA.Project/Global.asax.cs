@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using LY.MVCOA.Core;
+using Microsoft.Practices.Unity;
+
 
 namespace LY.MVCOA.Project
 {
@@ -20,6 +23,11 @@ namespace LY.MVCOA.Project
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //AuthConfig.RegisterAuth();
+            //注入 Ioc
+            var container = new UnityContainer();
+            DependencyRegisterType.Container_Sys(ref container);
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
         }
     }
 }

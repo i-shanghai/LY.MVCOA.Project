@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LY.MVCOA.Models.Sys;
+using Microsoft.Practices.Unity; 
 using LY.MVCOA.BLL;
 using LY.MVCOA.Models;
+using LY.MVCOA.IBLL;
 
 namespace LY.MVCOA.Project.Controllers
 {
     public class SysSampleController : Controller
     {
-        // GET: SysSample
+        //
+        // GET: /SysSample/
+        /// <summary>
+        /// 业务层注入
+        /// </summary>
+        [Dependency]
+        public ISysSampleBLL m_BLL { get; set; }
         public ActionResult Index()
         {
-            SysSampleBLL bll = new SysSampleBLL();
-            List<SysSample> list = bll.GetList("");
+            IEnumerable<SysSampleModel> list = m_BLL.GetList("");
             return View(list);
         }
 
